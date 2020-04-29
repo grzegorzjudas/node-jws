@@ -4,6 +4,13 @@ GCP Provider for node-jws handling signatures/verification using Google Cloud KM
 ## Introduction
 This is a Provider indended for use with `node-jws` library - allowing for signing and verification of JWS tokens using Google Cloud's KMS service.
 
+## Installation
+First, install the base library with:
+
+```bash
+npm install node-jws-gcp-provider
+```
+
 ## Usage
 Use by calling the provider with the key location variables:
 

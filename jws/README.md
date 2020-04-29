@@ -8,10 +8,16 @@ We've prepared a few providers you can use of the box, but nothing stops you fro
 
 ## Installation
 First, install the base library with:
-> npm install node-jws
+
+```bash
+npm install node-jws
+```
 
 Next, you need at least one provider (here, File Provider as an example):
-> npm install node-jws-file-provider
+
+```bash
+npm install node-jws-file-provider
+```
 
 ## Usage
 

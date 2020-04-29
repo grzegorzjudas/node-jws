@@ -4,6 +4,13 @@ File Provider for node-jws handling signatures/verification using file-based key
 ## Introduction
 This is a Provider indended for use with `node-jws` library - allowing for signing and verification of JWS tokens using keys stored in file system.
 
+## Installation
+First, install the base library with:
+
+```bash
+npm install node-jws-file-provider
+```
+
 ## Usage
 Use by calling the provider with two arguments: paths to a private and public keys (in PEM format):
 
