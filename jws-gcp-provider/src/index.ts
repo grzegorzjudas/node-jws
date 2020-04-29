@@ -3,6 +3,7 @@ import { KeyManagementServiceClient } from '@google-cloud/kms';
 import { sanitizeBase64, desanitizeBase64, KeyProvider, JWTClaims, JWTHeader, JWTAlghoritm } from 'node-jws';
 
 const client = new KeyManagementServiceClient();
+const publicKeys = {};
 
 function getKeyPath (project: string, location: string, keyring: string, keyname: string, version: string): string {
     return client.cryptoKeyVersionPath(project, location, keyring, keyname, version);
@@ -46,8 +47,11 @@ async function sign (name: string, alg: JWTAlghoritm, message: string): Promise<
 }
 
 async function getPublicKey (name: string): Promise<string> {
+    if (publicKeys[name]) return publicKeys[name];
+
     try {
         const [ publicKey ] = await client.getPublicKey({ name });
+        publicKeys[name] = publicKey.pem;
 
         return publicKey.pem;
     } catch (error) {

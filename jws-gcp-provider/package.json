@@ -1,6 +1,6 @@
 {
     "name": "node-jws-gcp-provider",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "GCP Provider for node-jws handling signatures/verification using Google Cloud KMS service",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
