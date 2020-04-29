@@ -87,8 +87,8 @@ export default class JWS {
         return this;
     }
 
-    intendedFor (audience: string[]): JWS {
-        this.claims.aud = audience;
+    intendedFor (audience: string | string[]): JWS {
+        this.claims.aud = [].concat(audience);
 
         return this;
     }
@@ -97,6 +97,12 @@ export default class JWS {
         this.header.alg = alg;
 
         return this;
+    }
+
+    isBeforeIssueTime (): boolean {
+        if (!this.claims.iat || typeof this.claims.iat !== 'number') return false;
+
+        return this.claims.iat > Math.floor(Date.now() / 1000);
     }
 
     isExpired (): boolean {

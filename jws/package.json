@@ -1,6 +1,6 @@
 {
     "name": "node-jws",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "description": "Json Web Signature library for signing/verifying signatures working natively with cloud",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
