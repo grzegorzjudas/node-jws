@@ -1,3 +1,19 @@
+export enum JWTAlghoritm {
+    RS256 = 'RS256',
+    RS384 = 'RS384',
+    RS512 = 'RS512',
+    PS256 = 'PS256',
+    PS384 = 'PS384',
+    PS512 = 'PS512',
+    ES256 = 'ES256',
+    ES384 = 'ES384',
+    ES512 = 'ES512',
+    HS256 = 'HS256',
+    HS384 = 'HS384',
+    HS512 = 'HS512',
+    none = 'none'
+}
+
 export type JWTHeader = {
     alg: JWTAlghoritm;
     jku?: string;
@@ -20,22 +36,6 @@ export type JWTClaims = {
     iat?: number;
     jti?: string;
     [k: string]: any;
-}
-
-export enum JWTAlghoritm {
-    RS256 = 'RS256',
-    RS384 = 'RS384',
-    RS512 = 'RS512',
-    PS256 = 'PS256',
-    PS384 = 'PS384',
-    PS512 = 'PS512',
-    ES256 = 'ES256',
-    ES384 = 'ES384',
-    ES512 = 'ES512',
-    HS256 = 'HS256',
-    HS384 = 'HS384',
-    HS512 = 'HS512',
-    none = 'none'
 }
 
 export interface KeyProvider {
@@ -135,7 +135,7 @@ export default class JWS {
         return this;
     }
 
-    setProvider (provider: KeyProvider) {
+    setProvider (provider: KeyProvider): void {
         this.provider = provider;
     }
 
@@ -147,7 +147,7 @@ export default class JWS {
         return this.claims;
     }
 
-    setRaw (raw: string) {
+    setRaw (raw: string): void {
         const header = JSON.parse(Buffer.from(raw.split('.')[0], 'base64').toString());
         const claims = JSON.parse(Buffer.from(raw.split('.')[1], 'base64').toString());
 
