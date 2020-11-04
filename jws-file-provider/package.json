@@ -1,6 +1,6 @@
 {
     "name": "node-jws-file-provider",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "File Provider for node-jws handling signatures/verification using file-based keys",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
