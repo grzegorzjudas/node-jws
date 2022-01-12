@@ -35,8 +35,8 @@ function mapAlghoritmToAwsCounterpart (alg: JWTAlghoritm): string {
         case JWTAlghoritm.PS384: return 'RSASSA_PSS_SHA_384';
         case JWTAlghoritm.PS512: return 'RSASSA_PSS_SHA_512';
         case JWTAlghoritm.HS256: throw new Error('HMAC algorithm with SHA-256 is not supported by AWS KMS.');
-        case JWTAlghoritm.HS384: throw new Error('HMAC algorithm with SHA-384 is not supported by AWS KMS.');;
-        case JWTAlghoritm.HS512: throw new Error('HMAC algorithm with SHA-512 is not supported by AWS KMS.');;
+        case JWTAlghoritm.HS384: throw new Error('HMAC algorithm with SHA-384 is not supported by AWS KMS.');
+        case JWTAlghoritm.HS512: throw new Error('HMAC algorithm with SHA-512 is not supported by AWS KMS.');
         case JWTAlghoritm.ES256: return 'ECDSA_SHA_256';
         case JWTAlghoritm.ES384: return 'ECDSA_SHA_384';
         case JWTAlghoritm.ES512: return 'ECDSA_SHA_512';
@@ -55,7 +55,6 @@ export default function AwsKmsKeyProvider (accessKey: string, secretAccessKey: s
             const rawHeader = sanitizeBase64(Buffer.from(JSON.stringify(header), 'utf8').toString('base64'));
             const rawClaims = sanitizeBase64(Buffer.from(JSON.stringify(claims), 'utf8').toString('base64'));
             const signature = sanitizeBase64(await sign(keyId, header.alg, `${rawHeader}.${rawClaims}`));
-
 
             return `${rawHeader}.${rawClaims}.${signature}`;
         },
