@@ -16,20 +16,18 @@ Use by calling the provider with the key location variables:
 
 ```typescript
 import JWS from 'node-jws';
-import AwsProvider from 'node-jws-gcp-provider';
+import AwsProvider from 'node-jws-aws-provider';
 
-const provider = new AwsProvider('my-aws-project', 'global', 'my-keyring', 'my-key', '1');
+const provider = new AwsProvider('access-key', 'secret-access-key', 'region', 'key-id');
 const jws = new JWS(provider);
 ```
 
 Where the variables are, in order:
 
-> **project** - AWS project ID
+> **access-key** - AWS Access Key ID
 
-> **location** - Region name for the KMS service
+> **secret-access-key** - AWS Secret Access Key
 
-> **keyring** - Name you've given to the keyring created beforehand
+> **region** - AWS region (i.e. us-east-1)
 
-> **keyname** - Name of the key itself in KMS
-
-> **version** - Key version, a string with a number
+> **key-id** - KMS Key ID
